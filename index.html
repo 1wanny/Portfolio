@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Nova | Creative Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script> <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#hero" class="logo">RY.</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <a>Toggle to switch themes</a>
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <p class="intro-text">Hi👋, my name is</p>
+                <h1 class="name-text">Ridzwan Yusri.</h1>
+                <p class="description-text">
+                    I'm an 18yo Singaporean student in Applied Ai & Analytics at Nanyang Polytechnic
+                </p>
+                <p class="description-text">Always exploring beyond the code I’m assigned.</p>
+                <a href="#projects" class="cta-button">Check out my work!</a>
+            </div>
+        </section>
+
+        <section id="about" class="pop-out">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Ridzwan, a student with a passion for blending clean code with elegant design. My journey into web development started with a simple "Hello World," and has since grown into a full-fledged passion for creating dynamic and engaging applications.</p>
+                    <p>Here are a few technologies I've been working with recently:</p>
+                    <ul class="skills-list">
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>HTML & CSS</li>
+                        <li>Power BI</li>
+                        <li>Excel</li>
+                    </ul>
+                </div>
+                <div class="about-img">
+                     <img src="WhatsApp Image 2026-02-05 at 00.30.29.jpeg" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="hidden">
+            <h2>Things I've Built</h2>
+            <div class="project-grid">
+                <div class="project-card hidden">
+                    <div class="project-image"></div>
+                    <h3>Project One</h3>
+                    <p>A web application for tracking personal finances, built with React and Chart.js.</p>
+                    <div class="project-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-card hidden">
+                    <div class="project-image"></div>
+                    <h3>Project Two</h3>
+                    <p>An interactive 3D portfolio showcase using Three.js and WebGL.</p>
+                    <div class="project-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-card hidden">
+                    <div class="project-image"></div>
+                    <h3>Project Three</h3>
+                    <p>A UI/UX redesign concept for a popular e-commerce platform, designed in Figma.</p>
+                    <div class="project-links">
+                        <a href="#">Dribbble</a>
+                        <a href="#">Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="hidden">
+            <h2>Get In Touch</h2>
+            <p>If you’d like to collaborate, discuss a project, or just say hi, drop me a message!</p>
+
+            <form class="contact-form">
+                <!-- Name -->
+                <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" required="" placeholder="Name">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required="" placeholder="Email">
+                </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required="" placeholder="Leave feedback about the site, career opportunities or just to say hello etc."></textarea>
+                </div>
+
+                <!-- Button -->
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Designed & Built by Alex Nova</p>
+        <div class="social-links">
+             <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+        </div>
+    </footer>
+
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target); // animate only once
+            }
+            });
+        }, { threshold: 0.2 });
+
+  document.querySelectorAll('.pop-out').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    } else {
+                        // Optional: remove class if you want animation to repeat
+                        // entry.target.classList.remove('show');
+                    }
+                });
+            });
+
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Scroll-Reveal Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            });
+
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+            
+            // --- Theme Toggle Logic ---
+            const themeToggle = document.querySelector('#checkbox');
+            const currentTheme = localStorage.getItem('theme');
+
+            // On page load, apply the saved theme
+            if (currentTheme) {
+                document.body.classList.add(currentTheme);
+                if (currentTheme === 'light-mode') {
+                    themeToggle.checked = true;
+                }
+            }
+
+            // Event listener for the toggle switch
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                    localStorage.setItem('theme', null); // Or remove the item
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
