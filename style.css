@@ -11,69 +11,59 @@
 
 /* Light Theme Variables */
 body.light-mode {
-    --dark-navy: #f5f5f5; /* Light background */
-    --navy: #ffffff; /* Lighter content background */
-    --light-navy: #e0e0e0; /* Slightly darker background for placeholders */
-    --text-primary: #1e1e1e; /* Dark text */
-    --text-secondary: #555555; /* Grey text */
-    --accent: #007bff; /* A nice blue for the accent */
+    --dark-navy: #f5f5f5;
+    --navy: #ffffff;
+    --light-navy: #e0e0e0;
+    --text-primary: #1e1e1e;
+    --text-secondary: #555555;
+    --accent: #007bff;
 }
 
-/* Theme Switch Styles */
-.theme-switch-wrapper {
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-}
-
-.theme-switch {
+    justify-content: center;
     position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
+    transition: all 0.3s ease;
+    padding: 8px;
 }
 
-.theme-switch input {
+.theme-toggle:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: rotate(20deg);
+}
+
+.theme-toggle svg {
+    position: absolute;
+    transition: all 0.3s ease;
+    color: var(--accent);
+}
+
+.sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.moon-icon {
     opacity: 0;
-    width: 0;
-    height: 0;
+    transform: rotate(90deg) scale(0);
 }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--light-navy);
-    transition: .4s;
+body.light-mode .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: var(--accent);
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
+body.light-mode .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 * {
@@ -91,10 +81,11 @@ body {
     color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 section {
-    padding: 100px 0;
+    padding: 100px 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -117,13 +108,13 @@ a {
 }
 
 a:hover {
-    color: white;
+    color: var(--text-primary);
 }
 
 /* 2. Navigation */
 nav {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     position: fixed;
@@ -131,6 +122,10 @@ nav {
     background-color: rgba(10, 25, 47, 0.85);
     backdrop-filter: blur(10px);
     z-index: 10;
+}
+
+body.light-mode nav {
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 nav .logo {
@@ -143,10 +138,7 @@ nav .logo {
 nav ul {
     display: flex;
     list-style: none;
-}
-
-nav ul li {
-    margin-left: 1.5rem;
+    gap: 1.5rem;
 }
 
 /* 3. Hero Section */
@@ -167,21 +159,14 @@ nav ul li {
     animation: fadeInUp 0.5s ease-out 0.2s forwards;
     opacity: 0;
 }
+
 .hero-content .name-text {
     font-size: clamp(40px, 8vw, 80px);
     line-height: 1.1;
     animation: fadeInUp 0.5s ease-out 0.4s forwards;
     opacity: 0;
 }
-.hero-content .tagline-text {
-    font-size: clamp(30px, 6vw, 60px);
-    color: var(--text-secondary);
-    text-align: left;
-    line-height: 1.1;
-    margin-top: 10px;
-    animation: fadeInUp 0.5s ease-out 0.6s forwards;
-    opacity: 0;
-}
+
 .hero-content .description-text {
     margin-top: 2rem;
     max-width: 500px;
@@ -190,25 +175,44 @@ nav ul li {
     opacity: 0;
 }
 
-/* Call to Action Button */
-.cta-button {
-    display: inline-block;
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
     margin-top: 3rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.5s ease-out 1s forwards;
+    opacity: 0;
+}
+
+.cta-button, .resume-button {
+    display: inline-block;
     padding: 1rem 1.75rem;
     border: 1px solid var(--accent);
     border-radius: 4px;
     color: var(--accent);
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeInUp 0.5s ease-out 1s forwards;
-    opacity: 0;
+    transition: all 0.3s ease;
 }
 
-.cta-button:hover {
+.cta-button:hover, .resume-button:hover {
     background-color: rgba(100, 255, 218, 0.1);
     transform: translateY(-3px);
 }
 
+.resume-button {
+    background-color: var(--accent);
+    color: var(--dark-navy);
+}
+
+body.light-mode .resume-button {
+    color: #ffffff;
+}
+
+.resume-button:hover {
+    background-color: var(--accent);
+    opacity: 0.9;
+}
 
 /* 4. About Section */
 .about-content {
@@ -216,6 +220,12 @@ nav ul li {
     grid-template-columns: 3fr 2fr;
     gap: 50px;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 .skills-list {
@@ -238,13 +248,11 @@ nav ul li {
     color: var(--accent);
 }
 
-.image-placeholder {
-    width: 300px;
-    height: 300px;
-    background-color: var(--light-navy);
-    border: 2px solid var(--accent);
+.about-img img {
+    max-width: 100%;
+    height: auto;
     border-radius: 4px;
-    margin: 0 auto;
+    border: 2px solid var(--accent);
 }
 
 /* 5. Projects Section */
@@ -262,9 +270,17 @@ nav ul li {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+body.light-mode .project-card {
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
+}
+
 .project-card:hover {
     transform: translateY(-7px);
     box-shadow: 0 20px 30px -15px rgba(2,12,27,0.7);
+}
+
+body.light-mode .project-card:hover {
+    box-shadow: 0 20px 30px -15px rgba(0,0,0,0.15);
 }
 
 .project-image {
@@ -303,65 +319,45 @@ nav ul li {
     margin: 1rem 0 2rem 0;
 }
 
-/* 7. Footer */
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    color: var(--text-secondary);
-    font-size: 0.8rem;
+/* Contact Links */
+.contact-links {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--light-navy);
 }
-.social-links a {
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
-    color: var(--text-secondary);
+
+.contact-links h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
-.social-links a:hover {
+
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--navy);
+    border-radius: 4px;
+    border: 1px solid var(--light-navy);
+    transition: all 0.3s ease;
+    text-align: left;
+    color: var(--text-primary);
+}
+
+.contact-item:hover {
+    border-color: var(--accent);
+    transform: translateX(5px);
+}
+
+.contact-item svg {
+    flex-shrink: 0;
     color: var(--accent);
-}
-
-/* 8. Animation Keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.pop-out {
-    opacity: 0;
-    transform: scale(0.7);
-    transition: opacity 0.5s ease, transform 1s ease;
-}
-.pop-out.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Scroll-Reveal Animation Class */
-.hidden {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition: all 1s;
-}
-
-
-.show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-}
-
-/* Staggered project cards */
-.project-card:nth-child(2) {
-    transition-delay: 200ms;
-}
-.project-card:nth-child(3) {
-    transition-delay: 400ms;
 }
 
 /* Contact Form Styling */
@@ -371,6 +367,10 @@ footer {
     border-radius: 6px;
     box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
     text-align: left;
+}
+
+body.light-mode .contact-form {
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
 }
 
 .form-group {
@@ -417,4 +417,83 @@ footer {
 .send-btn:hover {
     background-color: rgba(100, 255, 218, 0.1);
     transform: translateY(-3px);
+}
+
+/* 7. Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.social-links a {
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.social-links a:hover {
+    color: var(--accent);
+}
+
+/* 8. Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pop-out {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.5s ease, transform 1s ease;
+}
+
+.pop-out.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Scroll-Reveal Animation Class */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+/* Staggered project cards */
+.project-card:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+.project-card:nth-child(3) {
+    transition-delay: 400ms;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-button, .resume-button {
+        text-align: center;
+    }
 }
