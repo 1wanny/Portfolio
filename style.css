@@ -118,6 +118,7 @@ nav {
     align-items: center;
     padding: 1rem 2rem;
     position: fixed;
+    top: 0;
     width: 100%;
     background-color: rgba(10, 25, 47, 0.85);
     backdrop-filter: blur(10px);
@@ -402,7 +403,6 @@ body.light-mode .contact-form {
     border-color: var(--accent);
 }
 
-/* Gallery section for project_1 */
 .gallery {
     display: flex;
     flex-direction: column;
@@ -411,13 +411,31 @@ body.light-mode .contact-form {
     margin-top: 2rem;
 }
 
-/* grid containing only the six images */
+.gifs-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.image-grid {
+    display: flex;
+    gap: 1rem;
+    width: 442px;
+    height: 261px;
+    justify-content: center;
+    justify-items: center;
+
+}
 .images-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
     max-width: 900px;
+    justify-content: center;
+    justify-items: center;
 }
 
 .gallery .image-box,
@@ -433,7 +451,8 @@ body.light-mode .contact-form {
 }
 
 .gallery .image-box img,
-.gallery .gif-box img {
+.gallery .gif-box img,
+.gallery .gif-box video {
     max-width: 100%;
     height: auto;
     display: block;

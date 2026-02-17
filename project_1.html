@@ -12,42 +12,49 @@
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">RY.</a>
-        <ul>
-            <li><a href="index.html">About</a></li>
-            <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-            <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-    </nav>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">RY.</a>
+            <ul>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
 
     <div class="project-hero">
-        <!-- gallery section with six images and centered GIF above -->
         <section id="gallery" class="gallery">
-            <div class="gif-box"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Example GIF"></div>
+            <div class="gifs-row">
+                <div class="gif-box">
+                    <video src="images/UX assignment/Screen Recording 2026-02-17 215005.mp4" autoplay muted loop playsinline></video>
+                </div>
+                <div class="gif-box">
+                    <video src="images/UX assignment/Screen Recording 2026-02-17 215229.mp4" autoplay muted loop playsinline></video>
+                </div>
+            </div>
             <div class="images-grid">
-                <div class="image-box"><img src="https://media.licdn.com/dms/image/v2/D562DAQFdYJRAGr4NjA/profile-treasury-image-shrink_1280_1280/B56Zwsr_6bJMAQ-/0/1770276258578?e=1771513200&v=beta&t=AvNkjsnsXPFArHpAHtu8L8tabDs2Lijjn3KdV8iXMaw" alt="Image 1"></div>
-                <div class="image-box"><img src="https://via.placeholder.com/300x200?text=Image+2" alt="Image 2"></div>
-                <div class="image-box"><img src="https://via.placeholder.com/300x200?text=Image+3" alt="Image 3"></div>
-                <div class="image-box"><img src="https://via.placeholder.com/300x200?text=Image+4" alt="Image 4"></div>
-                <div class="image-box"><img src="https://via.placeholder.com/300x200?text=Image+5" alt="Image 5"></div>
-                <div class="image-box"><img src="https://via.placeholder.com/300x200?text=Image+6" alt="Image 6"></div>
+                <div class="image-box"><img src="https://media.licdn.com/dms/image/v2/D562DAQFdYJRAGr4NjA/profile-treasury-image-shrink_1280_1280/B56Zwsr_6bJMAQ-/0/1770276258578?e=1771945200&v=beta&t=S-SiSu86Di7k5hqiim1Sh6gcdOL5ahdFDCGOMiMH7YE" alt="Image 1"></div>
+                <div class="image-box"><img src="images/UX assignment/Screenshot 2026-02-17 215033.png" alt="Image 2"></div>
+            </div>
+            <div class="image-grid">
+                <div class="image-box"><img src="images/UX assignment/Screenshot 2026-02-17 215140.png" alt="Image 3" style="justify-content: center;"></div>
             </div>
         </section> 
 </body>
