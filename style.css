@@ -351,6 +351,12 @@ body.light-mode .project-card:hover {
     color: var(--accent);
 }
 
+.project-title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
 .gallery {
     display: flex;
     flex-direction: column;
