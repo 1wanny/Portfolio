@@ -84,12 +84,22 @@ export type Activity = {
   links?: Link[]
 }
 
+/**
+ * One labelled block of modules, e.g. a year or a semester.
+ * The label is free text — 'Year 1', 'Semester 2', 'Electives' all work.
+ */
+export type CourseworkGroup = {
+  label: string
+  modules: string[]
+}
+
 export type Education = {
   institution: string
   program: string
   start: string
   end: string
-  coursework: string[]
+  /** Grouped coursework. Use a single group with any label if you don't want a split. */
+  coursework: CourseworkGroup[]
   /** Optional. Leave the array empty to hide the block entirely. */
   achievements?: string[]
 }

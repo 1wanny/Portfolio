@@ -33,15 +33,32 @@ export function Education() {
 
               <div className="lg:col-span-7">
                 <h4 className="text-xs font-medium tracking-wide text-fg-subtle uppercase">
-                  Relevant coursework
+                  Coursework
                 </h4>
-                <ul className="mt-3 flex flex-wrap gap-1.5">
-                  {entry.coursework.map((module, moduleIndex) => (
-                    <li key={`${module}-${moduleIndex}`}>
-                      <Tag>{module}</Tag>
-                    </li>
+
+                {/* One block per group (year / semester). The label sits above its
+                    modules so long module names get the full column width. */}
+                <dl className="mt-4 divide-y divide-border border-t border-border">
+                  {entry.coursework.map((group) => (
+                    <div key={group.label} className="py-4">
+                      <dt className="flex items-baseline gap-2">
+                        <span className="font-mono text-xs text-accent">{group.label}</span>
+                        <span className="text-xs text-fg-subtle">
+                          {group.modules.length} {group.modules.length === 1 ? 'module' : 'modules'}
+                        </span>
+                      </dt>
+                      <dd className="mt-2.5">
+                        <ul className="flex flex-wrap gap-1.5">
+                          {group.modules.map((module, moduleIndex) => (
+                            <li key={`${module}-${moduleIndex}`}>
+                              <Tag>{module}</Tag>
+                            </li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
                   ))}
-                </ul>
+                </dl>
               </div>
             </article>
           </Reveal>

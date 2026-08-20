@@ -28,7 +28,7 @@ export const site = {
     github: 'https://github.com/1wanny',
     linkedin: 'https://www.linkedin.com/in/ridzwan-yusri-0a5ab833b/',
     /** Put your PDF in `public/` and point here, e.g. '/resume.pdf'. */
-    resume: 'public/Resume.pdf',
+    resume: '/Resume.pdf',
   },
 } as const
 
