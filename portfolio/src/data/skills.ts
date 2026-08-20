@@ -14,22 +14,22 @@ export const skillGroups: SkillGroup[] = [
   {
     category: 'AI / Machine Learning',
     note: '[HOW YOU USE THESE]',
-    items: ['[TECHNOLOGY]', '[TECHNOLOGY]', '[TECHNOLOGY]'],
+    items: ['Python', 'Scikit-learn', '[TECHNOLOGY]'],
   },
   {
     category: 'Data / Analytics',
     note: '[HOW YOU USE THESE]',
-    items: ['[TECHNOLOGY]', '[TECHNOLOGY]', '[TECHNOLOGY]'],
+    items: ['Pandas', 'Numpy', 'SQL'],
   },
   {
     category: 'Frontend',
     note: '[HOW YOU USE THESE]',
-    items: ['[TECHNOLOGY]', '[TECHNOLOGY]', '[TECHNOLOGY]'],
+    items: ['HTML/CSS', 'Javascript', 'Typescript', 'React', 'Tailwind CSS'],
   },
   {
     category: 'Backend',
     note: '[HOW YOU USE THESE]',
-    items: ['[TECHNOLOGY]', '[TECHNOLOGY]', '[TECHNOLOGY]'],
+    items: ['Node.js', 'REST API', 'Flask', 'Jinja2'],
   },
   {
     category: 'Cloud / Infrastructure',
@@ -39,6 +39,6 @@ export const skillGroups: SkillGroup[] = [
   {
     category: 'Tools',
     note: '[HOW YOU USE THESE]',
-    items: ['[TECHNOLOGY]', '[TECHNOLOGY]', '[TECHNOLOGY]'],
+    items: ['Power BI', 'Github', 'Figma', 'KNIME', 'SAS Viya'],
   },
 ]
