@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- ==== SEO: replace the placeholders below ==== -->
+    <title>[YOUR NAME] — [YOUR ROLE]</title>
+    <meta name="description" content="[YOUR PORTFOLIO DESCRIPTION]" />
+    <meta name="author" content="[YOUR NAME]" />
+    <link rel="canonical" href="[SITE URL]" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="[YOUR NAME]" />
+    <meta property="og:title" content="[YOUR NAME] — [YOUR ROLE]" />
+    <meta property="og:description" content="[YOUR PORTFOLIO DESCRIPTION]" />
+    <meta property="og:url" content="[SITE URL]" />
+    <!-- Place a 1200x630 image at public/og-image.png, then set the URL below -->
+    <meta property="og:image" content="[SITE URL]/og-image.png" />
+    <meta property="og:image:alt" content="[OG IMAGE ALT TEXT]" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[YOUR NAME] — [YOUR ROLE]" />
+    <meta name="twitter:description" content="[YOUR PORTFOLIO DESCRIPTION]" />
+    <meta name="twitter:image" content="[SITE URL]/og-image.png" />
+
+    <!-- Set before paint so the theme never flashes -->
+    <script>
+      ;(() => {
+        // Restore the deep link stashed by public/404.html (GitHub Pages SPA fallback)
+        try {
+          const redirect = sessionStorage.getItem('spa:redirect')
+          if (redirect) {
+            sessionStorage.removeItem('spa:redirect')
+            history.replaceState(null, '', redirect)
+          }
+        } catch {}
+
+        try {
+          const stored = localStorage.getItem('theme')
+          const dark =
+            stored === 'dark' ||
+            (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.classList.toggle('dark', dark)
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+        } catch {}
+      })()
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

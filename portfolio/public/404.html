@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script>
+      // GitHub Pages has no SPA fallback: it serves this file for any unknown
+      // path (e.g. /projects/project-01 on a hard refresh). Stash the requested
+      // path in sessionStorage and hand control back to index.html, which
+      // restores it. Harmless on hosts that do have a fallback (Netlify/Vercel).
+      sessionStorage.setItem('spa:redirect', location.pathname + location.search + location.hash)
+      location.replace(
+        location.pathname.split('/').slice(0, location.hostname.endsWith('github.io') ? 2 : 1).join('/') || '/',
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
