@@ -2,7 +2,6 @@ import { About } from '@/components/About'
 import { Contact } from '@/components/Contact'
 import { CurrentlyBuilding } from '@/components/CurrentlyBuilding'
 import { Education } from '@/components/Education'
-import { Hackathons } from '@/components/Hackathons'
 import { Hero } from '@/components/Hero'
 import { Projects } from '@/components/Projects'
 import { ResumeCTA } from '@/components/ResumeCTA'
@@ -19,7 +18,6 @@ export function Home() {
       <About />
       <Projects />
       <Skills />
-      <Hackathons />
       <Education />
       <CurrentlyBuilding />
       <ResumeCTA />
