@@ -36,19 +36,18 @@ export const site = {
 export const about = {
   paragraphs: [
     "Hello! I'm Ridzwan, a curious and driven student who is always eager to learn and understand how things work. Challenges motivate me to persist until I find solutions, which led me to coding and exploring ideas in greater depth.",
-    '[BACKGROUND / INTERESTS PLACEHOLDER]',
-    '[WHAT I ENJOY BUILDING / LEARNING PLACEHOLDER]',
+    '',
+    'I also enjoy building my own free, personal versions of paid subscription tools.(FOR PERSONAL USE ONLY)',
   ],
   /** The "Currently" list. Labels are yours to change. */
   currently: [
     { label: 'Studying', value: 'Applied AI & Analytics' },
     { label: 'Focused on', value: 'Data Analysis' },
-    { label: 'Learning', value: 'nil' },
-    { label: 'Working toward', value: '[CURRENT GOAL]' },
+    { label: 'Working toward', value: 'Data Scientist' },
   ],
   /** Set `src` to an image path to show a photo. Leave null to hide the frame. */
   photo: {
-    src: null as string | null,
+    src: '/images/WhatsApp Image 2026-10-29 at 18.47.56.jpeg',
     alt: 'This is me',
   },
 } as const
@@ -57,7 +56,7 @@ export const about = {
 export const copy = {
   projectsSubheading: '[SHORT DESCRIPTION OF WHAT THESE PROJECTS REPRESENT]',
   ctaHeading: 'Interested in working together?',
-  ctaBody: '[SHORT CTA PLACEHOLDER]',
+  ctaBody: "Let's Connect",
   contactHeading: "Let's Connect",
-  contactBody: '[CONTACT MESSAGE PLACEHOLDER]',
+  contactBody: '',
 } as const

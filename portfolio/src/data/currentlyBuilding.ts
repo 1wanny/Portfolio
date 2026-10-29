@@ -11,22 +11,22 @@ import type { CurrentProject } from './types'
 
 export const currentlyBuilding: CurrentProject[] = [
   {
-    name: '[CURRENT PROJECT]',
-    description: '[SHORT DESCRIPTION]',
+    name: 'Finance Tracker',
+    description: "I got tired of paid features in expense tracking apps, so I built my own full-featured finance web app for personal use.",
     status: 'IN PROGRESS',
-    focus: ['[TECHNOLOGY / CONCEPT]', '[TECHNOLOGY / CONCEPT]'],
-    link: '[PROJECT URL]',
+    focus: ['Data analysis', 'Web development'],
+    link: '',
   },
   {
-    name: '[CURRENT PROJECT]',
-    description: '[SHORT DESCRIPTION]',
+    name: 'Self Made Spotify Wrapped',
+    description: "I was curious about my Spotify Wrapped data, so I used their free API to build a tool that tracks my listening stats in real time.",
     status: 'PROTOTYPING',
-    focus: ['[TECHNOLOGY / CONCEPT]', '[TECHNOLOGY / CONCEPT]'],
+    focus: ['Statistics/Data analysis', 'Web development', 'Dashboard'],
   },
   {
-    name: '[CURRENT PROJECT]',
-    description: '[SHORT DESCRIPTION]',
+    name: 'Predictive Model for Football Matches',
+    description: "I love watching football and playing Fantasy Premier League(FPL), where points are based on real-world player stats. I want to build a predictive model that forecasts player performances and picks high-scoring assets.(NEVER USE FOR ILLEGAL ACTIVITIES)",
     status: 'PLANNING',
-    focus: ['[TECHNOLOGY / CONCEPT]', '[TECHNOLOGY / CONCEPT]'],
+    focus: ['Machine Learning', 'Web development'],
   },
 ]

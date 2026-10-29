@@ -14,7 +14,7 @@ export const skillGroups: SkillGroup[] = [
   {
     category: 'AI / Machine Learning',
     note: '[HOW YOU USE THESE]',
-    items: ['Python', 'Scikit-learn', '[TECHNOLOGY]'],
+    items: ['Python', 'Scikit-learn', 'Pytorch'],
   },
   {
     category: 'Data / Analytics',

@@ -28,7 +28,7 @@ export function About() {
                 alt={about.photo.alt}
                 loading="lazy"
                 decoding="async"
-                className="aspect-square w-full max-w-xs rounded-lg border border-border object-cover"
+                className="aspect-square w-full max-w-xs rounded-lg border border-border object-cover object-[center_75%]"
               />
             ) : (
               <div
