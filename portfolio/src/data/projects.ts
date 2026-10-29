@@ -73,7 +73,7 @@ export const projects: Project[] = [
     tech: ['Typescript', 'Node.JS', 'React.js', 'Express.js'],
     categories: ['Web Development'],
     image: {
-      src: '/projects/Prophet/Watchlist.png',
+      src: '/projects/Prophet/watchlist.png',
       alt: 'Watchlist',
     },
     featured: true,
