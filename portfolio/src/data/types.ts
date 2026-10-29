@@ -10,14 +10,24 @@ export type Link = {
   href: string
 }
 
-/** An image slot. `src` may be null — the UI then renders a labelled placeholder. */
+/**
+ * A media slot. `src` may be null — the UI then renders a labelled placeholder.
+ *
+ * Point `src` at a `.mp4`, `.webm` or `.mov` and it renders as a video player
+ * instead of an image; everything else renders as an image. No other change is
+ * needed at the call site.
+ */
 export type ImageSlot = {
-  /** Path to the image, e.g. '/projects/my-project.png'. Null renders a placeholder box. */
+  /** Path under `public/`, e.g. '/projects/my-project.png' or '/projects/demo.mp4'. */
   src: string | null
-  /** Always write real alt text describing the image once you add one. */
+  /** Always write real alt text describing the media once you add it. */
   alt: string
-  /** Short caption shown under the image in case studies. Optional. */
+  /** How an image fits inside its frame. Defaults to cover. */
+  fit?: 'cover' | 'contain'
+  /** Short caption shown under the media in case studies. Optional. */
   caption?: string
+  /** Video only: a still shown before playback, e.g. '/projects/demo-poster.png'. */
+  poster?: string
 }
 
 export type CaseStudySection = {
@@ -30,6 +40,15 @@ export type CaseStudySection = {
   /** Optional image/diagram slot rendered at the end of the section. */
   image?: ImageSlot
 }
+
+/**
+ * Categories a project can be tagged with. These drive the filter controls on
+ * the all-projects page — add one here and it appears as a filter automatically
+ * (as soon as at least one project uses it).
+ */
+export const PROJECT_CATEGORIES = ['AI', 'Data Analysis', 'Web Development'] as const
+
+export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number]
 
 export type Project = {
   /** URL segment: /projects/<slug>. Must be unique. */
@@ -46,6 +65,8 @@ export type Project = {
   timeframe?: string
   /** Technologies, rendered as badges. */
   tech: string[]
+  /** One or more categories, used by the filter on /projects. */
+  categories: ProjectCategory[]
   /** Card / hero image. */
   image: ImageSlot
   /** Optional external links. Omit any that do not apply. */

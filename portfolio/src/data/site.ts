@@ -16,8 +16,6 @@ export const site = {
   headline: "Always exploring beyond the code I'm assigned",
   /** 2–3 sentence hero introduction. */
   intro: "I'm an 18yo Singaporean student, studying Applied AI & Analytics at Nanyang Polytechnic",
-  /** One-line tagline used in the footer. */
-  tagline: '[SHORT TAGLINE]',
   /** Where you are based. Set to null to hide. */
   location: 'Singapore',
   /** Availability line shown in the hero status pill. Set to null to hide. */

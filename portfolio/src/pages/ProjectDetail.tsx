@@ -48,7 +48,7 @@ function CaseStudy({ project }: { project: Project }) {
       {/* ---------- Header ---------- */}
       <Container>
         <Link
-          to="/#projects"
+          to="/projects"
           className="inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-accent"
         >
           <ArrowLeft className="size-4" aria-hidden="true" />
@@ -62,10 +62,12 @@ function CaseStudy({ project }: { project: Project }) {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-fg-muted">{project.tagline}</p>
 
           <dl className="mt-8 grid gap-6 sm:grid-cols-3">
-            <div>
-              <dt className="text-xs text-fg-subtle">Role</dt>
-              <dd className="mt-1 text-sm text-fg">{project.role}</dd>
-            </div>
+            {project.role ? (
+              <div>
+                <dt className="text-xs text-fg-subtle">Role</dt>
+                <dd className="mt-1 text-sm text-fg">{project.role}</dd>
+              </div>
+            ) : null}
             {project.timeframe ? (
               <div>
                 <dt className="text-xs text-fg-subtle">Year</dt>

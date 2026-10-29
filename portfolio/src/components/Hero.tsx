@@ -48,7 +48,7 @@ export function Hero() {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-fg-muted">{site.intro}</p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Button href="#projects" iconAfter={<ArrowRight className="size-4" />}>
+              <Button href="projects" iconAfter={<ArrowRight className="size-4" />}>
                 View projects
               </Button>
               <Button

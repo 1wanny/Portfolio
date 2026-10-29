@@ -80,7 +80,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             size="sm"
             iconAfter={<ArrowUpRight className="size-4" />}
           >
-            View case study
+            View project
             <span className="sr-only"> for {project.name}</span>
           </Button>
 

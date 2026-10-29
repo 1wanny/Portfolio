@@ -13,32 +13,32 @@ import type { SkillGroup } from './types'
 export const skillGroups: SkillGroup[] = [
   {
     category: 'AI / Machine Learning',
-    note: '[HOW YOU USE THESE]',
+    note: 'Core AI and ML concepts, including the CRISP-DM methodology, the shift from symbolic AI rules to statistical machine learning, and the distinctions between supervised and unsupervised learning',
     items: ['Python', 'Scikit-learn', 'Pytorch'],
   },
   {
     category: 'Data / Analytics',
-    note: '[HOW YOU USE THESE]',
+    note: 'Foundational Array Operations, Numerical Computation, Dataset Exploration & Inspection, Data Cleaning & Missing Value Handling, Data Filtering/Selection/Sorting, Feature Engineering and Derived Column Creation',
     items: ['Pandas', 'Numpy', 'SQL'],
   },
   {
     category: 'Frontend',
-    note: '[HOW YOU USE THESE]',
+    note: 'Frontend and UX development using HTML, CSS, JavaScript, TypeScript, and React to build responsive, interactive user interfaces, with Tailwind CSS for styling and consistent UI design.',
     items: ['HTML/CSS', 'Javascript', 'Typescript', 'React', 'Tailwind CSS'],
   },
   {
     category: 'Backend',
-    note: '[HOW YOU USE THESE]',
+    note: 'Backend development using Node.js and Express.js, including REST API development, database management with Sequelize ORM, CRUD operations, JWT-based authentication.',
     items: ['Node.js', 'REST API', 'Flask', 'Jinja2'],
   },
   {
     category: 'Cloud / Infrastructure',
-    note: '[HOW YOU USE THESE]',
-    items: ['[TECHNOLOGY]', '[TECHNOLOGY]', '[TECHNOLOGY]'],
+    note: 'Database management using PostgreSQL and MySQL, with experience using Supabase for cloud-hosted database services and backend integration.',
+    items: ['Supabase', 'PostgreSQL', 'MySQL'],
   },
   {
     category: 'Tools',
-    note: '[HOW YOU USE THESE]',
+    note: 'GitHub for version control and collaborative development, Figma for UI/UX design, Power BI for data visualization, KNIME for data wrangling and workflow automation, and SAS Viya for machine learning model development and evaluation.',
     items: ['Power BI', 'Github', 'Figma', 'KNIME', 'SAS Viya'],
   },
 ]

@@ -52,7 +52,7 @@ export const education: Education[] = [
       },
       {
         label: 'Year 3',
-        modules: ['Final Year Project (WIU)', 'Internship Programme (WIU)'],
+        modules: ['Internship Programme (WIU)'],
       },
     ],
     achievements: ['WIU: Work-Integrated Unit, this can be an internship or project that simulates real-world work, where students can demonstrate their skills and competencies.'],

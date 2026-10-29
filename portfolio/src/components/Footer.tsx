@@ -24,7 +24,10 @@ export function Footer() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-semibold tracking-tight">{site.name}</p>
-            <p className="mt-1 text-sm text-fg-muted">{site.tagline}</p>
+            {/* Optional: add `tagline: '…'` to site.ts to show a line here. */}
+            {'tagline' in site ? (
+              <p className="mt-1 text-sm text-fg-muted">{String(site.tagline)}</p>
+            ) : null}
           </div>
 
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">

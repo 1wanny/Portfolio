@@ -12,7 +12,7 @@ import type { CurrentProject } from './types'
 export const currentlyBuilding: CurrentProject[] = [
   {
     name: 'Finance Tracker',
-    description: "I got tired of paid features in expense tracking apps, so I built my own full-featured finance web app for personal use.",
+    description: "I got tired of paid features in expense tracking apps, so I'm building my own full-featured finance web app for personal use.",
     status: 'IN PROGRESS',
     focus: ['Data analysis', 'Web development'],
     link: '',
@@ -25,7 +25,7 @@ export const currentlyBuilding: CurrentProject[] = [
   },
   {
     name: 'Predictive Model for Football Matches',
-    description: "I love watching football and playing Fantasy Premier League(FPL), where points are based on real-world player stats. I want to build a predictive model that forecasts player performances and picks high-scoring assets.(NEVER USE FOR ILLEGAL ACTIVITIES)",
+    description: "I love watching football and playing Fantasy Premier League(FPL), where points are based on real-world player stats. I want to build a predictive model that forecasts player performances and picks high-scoring assets.",
     status: 'PLANNING',
     focus: ['Machine Learning', 'Web development'],
   },
