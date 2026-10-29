@@ -1,4 +1,4 @@
-import { ArrowUpRight, ExternalLink } from 'lucide-react'
+import { ArrowUpRight, ExternalLink, FileText } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { GithubIcon } from './ui/BrandIcons'
 import type { Project } from '@/data/types'
@@ -83,6 +83,19 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             View project
             <span className="sr-only"> for {project.name}</span>
           </Button>
+
+          {project.links?.report !== undefined ? (
+            <Button
+              href={project.links.report}
+              variant="secondary"
+              size="sm"
+              external
+              icon={<FileText className="size-4" />}
+            >
+              View report
+              <span className="sr-only"> for {project.name} (PDF, opens in a new tab)</span>
+            </Button>
+          ) : null}
 
           {project.links?.github !== undefined ? (
             <Button

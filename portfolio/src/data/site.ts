@@ -8,8 +8,16 @@
 export const site = {
   /** Full name, used in the hero, footer and page titles. */
   name: 'Ridzwan Yusri',
-  /** 2–3 characters for the navbar mark, e.g. initials. */
-  initials: '[RY]',
+  /**
+   * Navbar wordmark. Two files so the mark stays readable in both themes:
+   * `light` is used on the light background, `dark` on the dark one.
+   */
+  logo: {
+    light: '/logo.png',
+    dark: '/logo-dark.png',
+    /** Empty on purpose — the adjacent text already names the site. */
+    alt: '',
+  },
   /** Small label above the hero heading, e.g. your field. */
   role: 'Aspiring Data Analyst / AI Engineer',
   /** Large supporting headline under your name. Keep it under ~12 words. */
@@ -27,6 +35,14 @@ export const site = {
     linkedin: 'https://www.linkedin.com/in/ridzwan-yusri-0a5ab833b/',
     /** Put your PDF in `public/` and point here, e.g. '/resume.pdf'. */
     resume: '/Resume.pdf',
+    /**
+     * Optional endpoint the contact form POSTs to, e.g. a Formspree
+     * ('https://formspree.io/f/xxxxxxxx') or Web3Forms URL. Sign up, paste the
+     * URL here, and messages arrive in your inbox without leaving the page.
+     * Leave it empty and the form instead opens the visitor's email client
+     * with the message pre-filled — which still works, just less smoothly.
+     */
+    contactForm: '',
   },
 } as const
 
@@ -52,7 +68,7 @@ export const about = {
 
 /** Section intros used across the page. */
 export const copy = {
-  projectsSubheading: '[SHORT DESCRIPTION OF WHAT THESE PROJECTS REPRESENT]',
+  projectsSubheading: "",
   ctaHeading: 'Interested in working together?',
   ctaBody: "Let's Connect",
   contactHeading: "Let's Connect",

@@ -34,6 +34,10 @@
   --warning: #8a5a00;
 }
 
+/* The theme is a class on <html>, not an OS preference, so point the `dark:`
+   variant at it — otherwise dark:* utilities would follow the OS instead. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 .dark {
   color-scheme: dark;
 

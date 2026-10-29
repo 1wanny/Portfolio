@@ -106,9 +106,22 @@ export function Navbar() {
           {/* Brand */}
           <Link
             to="/"
-            className="font-mono text-sm font-semibold tracking-tight text-fg transition-colors hover:text-accent"
+            className="inline-flex items-center rounded transition-opacity hover:opacity-80"
           >
-            <span className="rounded border border-border-strong px-2 py-1">{site.initials}</span>
+            <img
+              src={site.logo.light}
+              alt={site.logo.alt}
+              width={274}
+              height={196}
+              className="h-7 w-auto dark:hidden"
+            />
+            <img
+              src={site.logo.dark}
+              alt={site.logo.alt}
+              width={274}
+              height={196}
+              className="hidden h-7 w-auto dark:block"
+            />
             <span className="sr-only">{site.name} — home</span>
           </Link>
 

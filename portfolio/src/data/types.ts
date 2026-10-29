@@ -74,6 +74,11 @@ export type Project = {
     github?: string
     demo?: string
     docs?: string
+    /**
+     * A written report / documentation PDF. Put the file in `public/` and point
+     * here, e.g. '/reports/prophet.pdf'. It opens in a new browser tab.
+     */
+    report?: string
   }
   /** Set false to keep a project in the list but off the home page. */
   featured?: boolean

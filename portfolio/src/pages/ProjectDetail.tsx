@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, BookText, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BookText, ExternalLink, FileText } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { GithubIcon, type IconComponent } from '@/components/ui/BrandIcons'
 import { Button } from '@/components/ui/Button'
@@ -10,6 +10,14 @@ import { getAdjacentProjects, getProjectBySlug } from '@/data/projects'
 import type { CaseStudySection, Project } from '@/data/types'
 import { site } from '@/data/site'
 import { usePageMeta } from '@/hooks/usePageMeta'
+
+type ProjectLink = {
+  label: string
+  href?: string
+  Icon: IconComponent
+  /** Open in a new tab even when the href is a local path. */
+  external?: boolean
+}
 
 /** 'The Problem' -> 'the-problem', used for the in-page contents links. */
 function slugifySection(title: string) {
@@ -33,15 +41,16 @@ function CaseStudy({ project }: { project: Project }) {
   const { previous, next } = getAdjacentProjects(project.slug)
   usePageMeta(`${project.name} — ${site.name}`, project.tagline)
 
+  // `external: true` forces a new tab for same-origin files like a report PDF,
+  // which the Button's http(s) auto-detection would otherwise open in place.
   const externalLinks = (
     [
+      { label: 'View report', href: project.links?.report, Icon: FileText, external: true },
       { label: 'GitHub', href: project.links?.github, Icon: GithubIcon },
       { label: 'Live demo', href: project.links?.demo, Icon: ExternalLink },
       { label: 'Documentation', href: project.links?.docs, Icon: BookText },
-    ] as Array<{ label: string; href?: string; Icon: IconComponent }>
-  ).filter((link): link is { label: string; href: string; Icon: IconComponent } =>
-    Boolean(link.href),
-  )
+    ] as ProjectLink[]
+  ).filter((link): link is ProjectLink & { href: string } => Boolean(link.href))
 
   return (
     <article className="pt-28 pb-20 sm:pt-32">
@@ -84,12 +93,13 @@ function CaseStudy({ project }: { project: Project }) {
 
           {externalLinks.length > 0 ? (
             <div className="mt-8 flex flex-wrap gap-2.5">
-              {externalLinks.map(({ label, href, Icon }) => (
+              {externalLinks.map(({ label, href, Icon, external }) => (
                 <Button
                   key={label}
                   href={href}
                   variant="secondary"
                   size="sm"
+                  external={external}
                   icon={<Icon className="size-4" />}
                 >
                   {label}
@@ -152,12 +162,13 @@ function CaseStudy({ project }: { project: Project }) {
                     Links
                   </h2>
                   <div className="mt-5 flex flex-wrap gap-2.5">
-                    {externalLinks.map(({ label, href, Icon }) => (
+                    {externalLinks.map(({ label, href, Icon, external }) => (
                       <Button
                         key={label}
                         href={href}
                         variant="secondary"
                         size="sm"
+                        external={external}
                         icon={<Icon className="size-4" />}
                       >
                         {label}

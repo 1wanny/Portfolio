@@ -1,5 +1,5 @@
 import { useId, useState, type FormEvent } from 'react'
-import { AlertTriangle, Mail } from 'lucide-react'
+import { CheckCircle2, Loader2, Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, type IconComponent } from './ui/BrandIcons'
 import { copy, site } from '@/data/site'
 import { cn, isPlaceholder, mailto, prettyUrl } from '@/lib/utils'
@@ -90,36 +90,100 @@ function ContactDetails() {
 }
 
 /**
- * Contact form — UI only.
+ * Contact form.
  *
- * There is deliberately no backend: submitting shows a notice rather than
- * pretending to send. Wire it to a form service (Formspree, Web3Forms, a small
- * API route) and replace `handleSubmit` when you are ready.
+ * Two ways to deliver a message, chosen by `site.links.contactForm`:
+ *
+ * - With an endpoint set, the message is POSTed in the background and the
+ *   visitor never leaves the page.
+ * - Without one, it opens their email client with everything pre-filled. Less
+ *   smooth, but a real message either way — nothing is silently dropped.
  */
 function ContactForm() {
   const id = useId()
-  const [submitted, setSubmitted] = useState(false)
+  const endpoint: string = site.links.contactForm
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'handoff' | 'error'>('idle')
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setSubmitted(true)
+    const form = event.currentTarget
+    const data = new FormData(form)
+
+    // Honeypot: real people leave it empty, bots fill everything in. Pretend to
+    // succeed so the bot has nothing to learn from.
+    if (data.get('company')) {
+      setStatus('sent')
+      form.reset()
+      return
+    }
+
+    const name = String(data.get('name') ?? '')
+    const email = String(data.get('email') ?? '')
+    const message = String(data.get('message') ?? '')
+
+    if (!endpoint) {
+      const subject = `Portfolio message from ${name}`
+      const lines = [message, '', `— ${name}`, email]
+      window.location.href =
+        `mailto:${site.links.email}` +
+        `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`
+      setStatus('handoff')
+      return
+    }
+
+    setStatus('sending')
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          subject: `Portfolio message from ${name}`,
+        }),
+      })
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+      setStatus('sent')
+      form.reset()
+    } catch {
+      setStatus('error')
+    }
   }
+
+  const sending = status === 'sending'
 
   const fieldClass =
     'w-full rounded-md border border-border bg-bg px-3.5 py-2.5 text-sm text-fg ' +
     'placeholder:text-fg-subtle/70 transition-colors hover:border-border-strong ' +
-    'focus:border-accent focus:outline-none'
+    'focus:border-accent focus:outline-none disabled:opacity-60'
+
+  if (status === 'sent') {
+    return (
+      <div className="rounded-lg border border-border bg-surface p-6 sm:p-7">
+        <p className="flex items-start gap-3">
+          <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-success" aria-hidden="true" />
+          <span>
+            <strong className="block font-medium text-fg">Message sent.</strong>
+            <span className="mt-1 block text-sm leading-relaxed text-fg-muted">
+              Thanks for reaching out — I&apos;ll reply to the email address you gave.
+            </span>
+          </span>
+        </p>
+        <Button
+          variant="secondary"
+          size="sm"
+          className="mt-6"
+          onClick={() => setStatus('idle')}
+        >
+          Send another
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <form onSubmit={handleSubmit} className="rounded-lg border border-border bg-surface p-6 sm:p-7">
-      <p className="mb-6 flex items-start gap-2.5 rounded-md border border-dashed border-warning/40 px-3.5 py-3 text-xs leading-relaxed text-fg-muted">
-        <AlertTriangle className="mt-px size-4 shrink-0 text-warning" aria-hidden="true" />
-        <span>
-          <strong className="font-medium text-fg">Placeholder form.</strong> This is UI only and
-          does not send messages yet — please use the email link for now.
-        </span>
-      </p>
-
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor={`${id}-name`} className="block text-sm font-medium text-fg">
@@ -130,6 +194,7 @@ function ContactForm() {
             name="name"
             type="text"
             required
+            disabled={sending}
             autoComplete="name"
             placeholder="Your name"
             className={cn(fieldClass, 'mt-2')}
@@ -145,6 +210,7 @@ function ContactForm() {
             name="email"
             type="email"
             required
+            disabled={sending}
             autoComplete="email"
             placeholder="you@company.com"
             className={cn(fieldClass, 'mt-2')}
@@ -161,15 +227,32 @@ function ContactForm() {
           name="message"
           required
           rows={5}
+          disabled={sending}
           placeholder="What would you like to talk about?"
           className={cn(fieldClass, 'mt-2 resize-y')}
         />
       </div>
 
+      {/* Spam honeypot — hidden from people and from screen readers alike. */}
+      <div aria-hidden="true" className="hidden">
+        <label htmlFor={`${id}-company`}>Company</label>
+        <input id={`${id}-company`} name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <Button type="submit">Send message</Button>
+        <Button
+          type="submit"
+          icon={sending ? <Loader2 className="size-4 animate-spin" /> : undefined}
+        >
+          {sending ? 'Sending…' : 'Send message'}
+        </Button>
+
         <p role="status" aria-live="polite" className="text-sm text-fg-muted">
-          {submitted ? 'Not sent — this form has no backend connected yet.' : ''}
+          {status === 'handoff'
+            ? 'Opening your email app with the message ready to send.'
+            : status === 'error'
+              ? `That didn’t go through. Please email ${site.links.email} instead.`
+              : ''}
         </p>
       </div>
     </form>
