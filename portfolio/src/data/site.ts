@@ -32,7 +32,7 @@ export const site = {
   links: {
     email: 'ridzwan.yusri@gmail.com',
     github: 'https://github.com/1wanny',
-    linkedin: 'https://www.linkedin.com/in/ridzwan-yusri-0a5ab833b/',
+    linkedin: 'https://www.linkedin.com/in/ridzwan-yusri',
     /** Put your PDF in `public/` and point here, e.g. '/resume.pdf'. */
     resume: '/Resume.pdf',
     /**
